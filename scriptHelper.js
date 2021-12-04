@@ -5,6 +5,7 @@
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
+
    // Here is the HTML formatting for our mission target div.
    /*
                 <h2>Mission Destination</h2>
@@ -52,6 +53,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     }
     else if (cargoMass >= 10000 && fuelLevel >= 10000) {
         document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>`The shuttle is ready for launch.`</span>"
+        document.getElementById("launchStatus").innerHTML = "hidden";
     }
 }
 }
@@ -60,13 +62,14 @@ async function myFetch() {
     let planetsReturned = response.json();
 
     planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        console.log(response);
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
-    return Math.floor(Math.random() * planets.length);
+    return Math.floor(Math.random(planets) * planets.length);
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
