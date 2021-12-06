@@ -48,16 +48,16 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     if (fuelLevel < 10000) {
         document.getElementById("faultyItems").style.visibility = "visible";
         // look up visibility and how to use it
-        document.getElementById("fuelLevel").innerHTML = `There is not enough fuel for the journey`
+        document.getElementById("fuelStatus").innerHTML = `There is not enough fuel for the journey`
         document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
     } else if (cargoMass > 10000) {
         document.getElementById("faultyItems").style.visibility = "visible";
-        document.getElementById("cargoMass").innerHTML = `There is too much mass for the shuttle to take off`
+        document.getElementById("cargoStatus").innerHTML = `There is too much mass for the shuttle to take off`
         document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
     }
     else {
         document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>`The shuttle is ready for launch.`</span>"
-        document.getElementById("launchStatus").innerHTML = "hidden";
+        document.getElementById("faultyItems").innerHTML = "hidden";
     };
 };
 
