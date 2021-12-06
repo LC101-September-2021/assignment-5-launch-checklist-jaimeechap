@@ -7,19 +7,18 @@ const { ConsoleReporter } = require('jasmine');
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-
-   // Here is the HTML formatting for our mission target div.
-   /*
+    let userInput = document.getElementById("missionTarget");
+    userInput.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
+                    <li>Name: ${json.name}</li>
+                    <li>Diameter: ${json.diameter} </li>
+                    <li>Star: ${json.star}</li>
+                    <li>Distance from Earth: ${json.distance}</li>
+                    <li>Number of Moons: ${json.moons}</li>
                 </ol>
-                <img src="">
-   */
+                <img src="${json.imageUrl}">
+`
 }
 
 function validateInput(testInput) {
