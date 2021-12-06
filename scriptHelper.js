@@ -11,13 +11,13 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     userInput.innerHTML = `
                 <h2>Mission Destination</h2>
                 <ol>
-                    <li>Name: ${json.name}</li>
-                    <li>Diameter: ${json.diameter} </li>
-                    <li>Star: ${json.star}</li>
-                    <li>Distance from Earth: ${json.distance}</li>
-                    <li>Number of Moons: ${json.moons}</li>
+                    <li>Name: ${pickPlanet.name}</li>
+                    <li>Diameter: ${pickPlanet.diameter} </li>
+                    <li>Star: ${pickPlanet.star}</li>
+                    <li>Distance from Earth: ${pickPlanet.distance}</li>
+                    <li>Number of Moons: ${pickPlanet.moons}</li>
                 </ol>
-                <img src="${json.imageUrl}">
+                <img src="${pickPlanet.imageUrl}">
 `
 }
 
@@ -41,8 +41,6 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
-    let pilotName = document.querySelector("input[name=pilotName]");
-    let copilotName = document.querySelector("input[name=copilotName]");
     document.getElementById("pilotName").innerHTML = `Pilot Name: ${pilotName}`;
     document.getElementById("copilotName").innerHTML = `Copilot Name: ${copilotName}`;
     if (fuelLevel < 10000) {
@@ -70,8 +68,8 @@ async function myFetch() {
     return planetsReturned;
 }
 
-function pickPlanet(planets) {
-    return Math.floor(Math.random(planets) * planets.length);
+function pickPlanet() {
+    return Math.floor(Math.random(planetsReturned) * planetsReturned.length);
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
