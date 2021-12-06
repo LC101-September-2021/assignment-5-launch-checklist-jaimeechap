@@ -40,11 +40,9 @@ function validateInput(testInput) {
 });
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
     let pilotName = document.querySelector("input[name=pilotName]");
     let copilotName = document.querySelector("input[name=copilotName]");
-    let fuelLevel = document.querySelector("input[name=fuelLevel]");
-    let cargoMass = document.querySelector("input[name=cargoMass]");
     document.getElementById("pilotName").innerHTML = `Pilot Name: ${pilotName}`;
     document.getElementById("copilotName").innerHTML = `Copilot Name: ${copilotName}`;
     if (fuelLevel < 10000) {
