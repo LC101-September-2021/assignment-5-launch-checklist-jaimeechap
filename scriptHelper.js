@@ -1,5 +1,7 @@
 // Write your helper functions here!
 
+const { ConsoleReporter } = require('jasmine');
+
 
 
 require('isomorphic-fetch');
@@ -46,24 +48,24 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         // look up visibility and how to use it
         document.getElementById("fuelLevel").innerHTML = `There is not enough fuel for the journey`
         document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
-    if (cargoMass > 10000) {
+    } else if (cargoMass > 10000) {
         document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("cargoMass").innerHTML = `There is too much mass for the shuttle to take off`
         document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
     }
-    else if (cargoMass >= 10000 && fuelLevel >= 10000) {
+    else {
         document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>`The shuttle is ready for launch.`</span>"
         document.getElementById("launchStatus").innerHTML = "hidden";
-    }
-}
-}
+    };
+};
 
 async function myFetch() {
-    let planetsReturned = response.json();
 
-    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-        console.log(response);
-        });
+    let planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then (function(response) {
+        response.json().then( function(json) {
+            console.log(response);
+        }
+    });
 
     return planetsReturned;
 }
