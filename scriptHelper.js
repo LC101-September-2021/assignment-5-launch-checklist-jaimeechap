@@ -36,23 +36,89 @@ function validateInput(testInput) {
 };
  
 function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
-   document.getElementById("pilotName").innerHTML = `Pilot Name: ${pilot}`;
-   document.getElementById("copilotName").innerHTML = `Copilot Name: ${copilot}`;
+//    document.getElementById("pilotName").innerHTML = `Pilot Name: ${pilot}`;
+//    document.getElementById("copilotName").innerHTML = `Copilot Name: ${copilot}`;
    let userStrings = [pilot, copilot];
    let userNumbers = [fuelLevel, cargoMass];
-   for (let value of userStrings) {
-       validateInput(value);
-       if (" " || !isNaN(value)) {
-           alert("Invalid submission")
-       };
-   };
-   for (let value of userNumbers) {
-       validateInput(value);
-       if ("" || isNaN(value)) {
-           alert("Invalid submission");
-       };
-   };
- 
+
+    // for (let value of userStrings) {
+    //     if (validateInput(value) === "Empty" || validateInput(value) === "Is a number") {
+    // } alert ("Invalid submission");
+    // }; 
+
+    // for (let value of userNumbers) {
+    //     if (validateInput(value) === "Empty" || validateInput(value) === "Not a number"){
+    // } alert ("Invalid submission");
+    // };
+//    for (let value of userStrings) {
+//        let validateStrings = validateInput(value);
+//        while (validateStrings === "" || validateStrings !isNaN(value)
+//    }
+    for (let value of userStrings) {
+    validateInput(value);
+        if ("" || !isNaN(value)) {
+        alert("Invalid submission")
+        }
+    }
+
+    for (let value of userNumbers) {
+        validateInput(value);
+        if ("" || isNaN(value)) {
+            alert("Invalid submission")
+        }
+    }
+
+//     for (let value of userNumbers) {
+//         validateInput(value);
+//         while ("" || isNaN(value)) {
+//             alert("Invalid submission")
+//     };
+//     };
+//    for (let value of userStrings) {
+//     validateInput(value);
+//     if ("" || !isNaN(value)) {
+//         alert("Invalid submission")
+//     }
+//     }
+
+//     for (let value of userNumbers) {
+//         validateInput(value);
+//         if ("" || isNaN(value)) {
+//             alert("Invalid submission")
+//         }
+//     }
+//     }
+//     for (let value of userStrings) {
+//         validateInput(value);
+//      while (undefined || !isNaN(value)) {
+//        alert("Invalid submission")
+//     } 
+
+//    for (let value of userNumbers) {
+//     validateInput(value);
+//         while (null || isNaN(value)) {
+//        alert("Invalid submission")
+//         }
+//    }
+    //    } 
+    //    }
+    //     for (let value of userStrings) {
+    //       let validateStringStatus = validateInput(value);
+    //        if (validateStringStatus === " " || validateStringStatus === !isNaN(value)) {
+    //            alert("Invalid submission")
+    //         } else {
+    //             validateStringStatus === true;
+           
+    //    };
+//    for (let value of userNumbers) {
+//        let validateNumberStatus = validateInput(value);
+//        if (validateNumberStatus === "" ||validateNumberStatus === isNaN(value)) {
+//            alert("Invalid submission");
+//        } else {
+//         validateNumberStatus === true;
+      
+//    };
+
    if (fuelLevel < 10000) {
        document.getElementById("faultyItems").style.visibility = "visible";
        document.getElementById("fuelStatus").innerHTML = `There is not enough fuel for the journey`
@@ -65,6 +131,13 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
        document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>`The shuttle is ready for launch.`</span>"
        document.getElementById("faultyItems").innerHTML = "hidden";
    };
+
+   document.getElementById("pilotStatus").innerHTML =`${pilot.value}`;
+   document.getElementById("copilotStatus").innerHTML =`${copilot.value}`;
+   document.getElementById("fuelStatus").innerHTML =`${fuelLevel.value}`;
+   document.getElementById("cargoStatus").innerHTML =`${cargoMass.value}`;
+
+//    return form
 };
  
 async function myFetch() {
