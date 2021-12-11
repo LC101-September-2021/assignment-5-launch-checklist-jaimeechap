@@ -32,8 +32,6 @@ function validateInput(testInput) {
 function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
     if (validateInput(pilot.value) === "Empty" || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoMass.value) === "Empty") {
         alert ("You must enter information into each field.")
-    } else {
-        validateInput() === true;
     }
 
     
@@ -41,8 +39,6 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
         alert ("Invalid input")
     } else if (validateInput(fuelLevel.value) === "Not a number" || validateInput(cargoMass.value) === "Not a number") {
         alert ("Invalid input")
-    } else {
-        validateInput () === true;
     }
 
     if (fuelLevel.value < 10000) {
