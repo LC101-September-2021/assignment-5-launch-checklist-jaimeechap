@@ -20,7 +20,7 @@ window.addEventListener("load", function() {
         let planetPicked = pickPlanet(listedPlanets);
   
         // will call function and assign it to planetPicked
-        this.addDestinationInfo(document, planetPicked.name, planetPicked.diameter, planetPicked.star, planetPicked.distance, planetPicked.moons, planetPicked.imageUrl);
+        this.addDestinationInfo(document, planetPicked.name, planetPicked.diameter, planetPicked.star, planetPicked.distance, planetPicked.moons, planetPicked.image);
   
     });
  });
