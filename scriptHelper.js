@@ -43,21 +43,26 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
 
     if (fuelLevel.value < 10000) {
        document.getElementById("faultyItems").style.visibility = "visible";
-       document.getElementById("fuelStatus").innerHTML = `There is not enough fuel for the journey`
-       document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
+       document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>";
+       document.getElementById("fuelStatus").innerHTML =`${fuelLevel.value}: Fuel Level is not high enough for launch`;
+       document.getElementById("pilotStatus").innerHTML =`${pilot.value} ready`;
+       document.getElementById("copilotStatus").innerHTML =`${copilot.value} ready`;
    } else if (cargoMass.value > 10000) {
        document.getElementById("faultyItems").style.visibility = "visible";
-       document.getElementById("cargoStatus").innerHTML = `There is too much mass for the shuttle to take off`
+       document.getElementById("cargoStatus").innerHTML = `There is too much mass for the shuttle to take off`;
        document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
-   } else {
+       document.getElementById("pilotStatus").innerHTML =`${pilot.value} ready`;
+       document.getElementById("copilotStatus").innerHTML =`${copilot.value} ready`;
+   } else if (fuelLevel.value > 10000 && cargoMass.value < 10000) {
        document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>`The shuttle is ready for launch.`</span>"
-       document.getElementById("faultyItems").innerHTML = "hidden";
+       document.setElementById("faultyItems").innerHTML = "hidden";
+       document.getElementById("pilotStatus").innerHTML =`${pilot.value} ready`;
+       document.getElementById("copilotStatus").innerHTML =`${copilot.value} ready`;
+       document.getElementById("fuelStatus").innerHTML =`${fuelLevel.value}: Fuel Level high enough for launch`;
+       document.getElementById("cargoStatus").innerHTML =`${cargoMass.value}: Cargo Mass low enough for launch`;
    };
 
-   document.getElementById("pilotStatus").innerHTML =`${pilot.value} ready`;
-   document.getElementById("copilotStatus").innerHTML =`${copilot.value} ready`;
-   document.getElementById("fuelStatus").innerHTML =`${fuelLevel.value}: Fuel Level high enough for launch`;
-   document.getElementById("cargoStatus").innerHTML =`${cargoMass.value}: Cargo Mass low enough for launch`;
+   
 
 //    return form
 };
