@@ -15,7 +15,7 @@ window.addEventListener("load", function() {
         formSubmission(document, pilot, copilot, fuelLevel, cargoMass);
         // event.preventDefault();
  // need to work on list and document, it comes from
- 
+
 
     });
     let listedPlanets;
