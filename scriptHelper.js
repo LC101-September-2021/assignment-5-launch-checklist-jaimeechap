@@ -23,9 +23,9 @@ function validateInput(testInput) {
           return "Empty";
        }
         if (!isNaN(testInput)) {
-           return "Is a number"
+           return "Is a Number"
        } else {
-           return "Not a number";
+           return "Not a Number";
        }
 };
  
@@ -35,9 +35,9 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
     }
 
     
-    if (validateInput(pilot.value) === "Is a number" || validateInput(copilot.value) === "Is a number") {
+    if (validateInput(pilot.value) === "Is a Number" || validateInput(copilot.value) === "Is a Number") {
         alert ("Invalid input")
-    } else if (validateInput(fuelLevel.value) === "Not a number" || validateInput(cargoMass.value) === "Not a number") {
+    } else if (validateInput(fuelLevel.value) === "Not a Number" || validateInput(cargoMass.value) === "Not a Number") {
         alert ("Invalid input")
     }
 
@@ -62,9 +62,12 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
                    document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
                    document.getElementById("pilotStatus").innerHTML =`Pilot ${pilot.value} is ready`;
                    document.getElementById("copilotStatus").innerHTML =`Pilot ${copilot.value} is ready`;
-     } 
+     } else {
+         document.getElementById("launchStatusCheck").style.visibility= "hidden";
+     }
 
     };
+    
 //     if (fuelLevel.value < 10000) {
 //        document.getElementById("faultyItems").style.visibility = "visible";
 //        document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>";
