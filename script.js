@@ -1,12 +1,14 @@
 window.addEventListener("load", function() {
     let form = document.querySelector("form");
     let list = document.querySelector("faultyItems");
+    list.style.visibility = "hidden";
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         let pilot = document.querySelector("input[name=pilotName]");
         let copilot = document.querySelector("input[name=copilotName]");
         let fuelLevel = document.querySelector("input[name=fuelLevel]");
         let cargoMass = document.querySelector("input[name=cargoMass]");
+        
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass);
         // event.preventDefault();
  // need to work on list and document, it comes from
