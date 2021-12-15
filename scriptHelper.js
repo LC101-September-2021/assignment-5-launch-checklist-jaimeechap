@@ -47,7 +47,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
                document.getElementById("copilotStatus").innerHTML =`${copilot.value} is ready`;
                document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level high enough for launch`;
                document.getElementById("cargoStatus").innerHTML =`Cargo Mass: ${cargoMass.value} kilograms- Cargo Mass low enough for launch`;
-               document.getElementById("faultyItems").style.visibility = "visible";
+               document.getElementById("faultyItems").style.visibility = "hidden";
      } else if (fuelLevel.value < 10000) {
                    document.getElementById("faultyItems").style.visibility = "visible";
                    document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>";
