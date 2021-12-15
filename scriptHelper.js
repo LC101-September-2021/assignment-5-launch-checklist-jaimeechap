@@ -63,11 +63,11 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
                    document.getElementById("pilotStatus").innerHTML =`Pilot ${pilot.value} is ready`;
                    document.getElementById("copilotStatus").innerHTML =`Pilot ${copilot.value} is ready`;
      } else {
-         document.getElementById("launchStatusCheck").style.visibility= "hidden";
+         document.getElementById("faultyItems").style.visibility= "hidden";
      }
 
     };
-    
+
 //     if (fuelLevel.value < 10000) {
 //        document.getElementById("faultyItems").style.visibility = "visible";
 //        document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>";
