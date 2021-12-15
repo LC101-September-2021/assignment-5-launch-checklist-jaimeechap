@@ -1,4 +1,5 @@
 const { ConsoleReporter } = require('jasmine');
+// const { getDocumentTypeNodePublicId } = require('jsdom/lib/jsdom/living/domparsing/parse5-adapter-serialization');
  
  
 require('isomorphic-fetch');
@@ -29,7 +30,7 @@ function validateInput(testInput) {
        }
 };
  
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
+function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
     if (validateInput(pilot.value) === "Empty" || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoMass.value) === "Empty") {
         alert ("You must enter information into each field.")
     }
@@ -41,28 +42,49 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoMass) {
         alert ("Invalid input")
     }
 
+
+
+
     if (fuelLevel.value > 10000 && cargoMass.value < 10000) {
-               document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>`The shuttle is ready for launch.`</span>";
+                document.getElementById("faultyItems").style.visibility = "visible";
+               document.getElementById("launchStatus").innerHTML = "<span style='color: green;'>The shuttle is ready for launch.</span>";
                document.getElementById("pilotStatus").innerHTML =`${pilot.value} is ready`;
                document.getElementById("copilotStatus").innerHTML =`${copilot.value} is ready`;
                document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level high enough for launch`;
                document.getElementById("cargoStatus").innerHTML =`Cargo Mass: ${cargoMass.value} kilograms- Cargo Mass low enough for launch`;
-               document.getElementById("faultyItems").style.visibility = "visible";
-     } else if (fuelLevel.value < 10000) {
-                   document.getElementById("faultyItems").style.visibility = "visible";
+              
+     } else if (fuelLevel.value < 10000 && cargoMass.value < 10000) {
+        document.getElementById("faultyItems").style.visibility = "visible";
                    document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>";
                    document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level is not high enough for launch`;
                    document.getElementById("cargoStatus").innerHTML =`Cargo Mass: ${cargoMass.value} kilograms- Cargo Mass low enough for launch`;
                    document.getElementById("pilotStatus").innerHTML =`Pilot ${pilot.value} is ready`;
                    document.getElementById("copilotStatus").innerHTML =`Pilot ${copilot.value} is ready`;
-      } else if (cargoMass.value > 10000) {
-                   document.getElementById("faultyItems").style.visibility = "visible";
-                   document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level is not high enough for launch`;
+     } else if (fuelLevel.value < 10000 && cargoMass.value > 10000){
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>";
+        document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level is not high enough for launch`;
+        document.getElementById("cargoStatus").innerHTML =`Cargo Mass: ${cargoMass.value} kilograms- There is too much mass for the shuttle to take off`;
+        document.getElementById("pilotStatus").innerHTML =`Pilot ${pilot.value} is ready`;
+        document.getElementById("copilotStatus").innerHTML =`Pilot ${copilot.value} is ready`;
+      } else if (cargoMass.value > 10000 && fuelLevel.value > 10000) {
+        document.getElementById("faultyItems").style.visibility = "visible";
+                   document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level is high enough for launch`;
                    document.getElementById("cargoStatus").innerHTML = `Cargo Mass: ${cargoMass.value} kilograms- There is too much mass for the shuttle to take off`;
                    document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
                    document.getElementById("pilotStatus").innerHTML =`Pilot ${pilot.value} is ready`;
                    document.getElementById("copilotStatus").innerHTML =`Pilot ${copilot.value} is ready`;
-     } 
+     } else if (cargoMass.value > 10000 && fuelLevel.value < 10000) {
+        document.getElementById("faultyItems").style.visibility = "visible";
+        document.getElementById("fuelStatus").innerHTML =`Fuel Level: ${fuelLevel.value} liters- Fuel Level is not high enough for launch`;
+        document.getElementById("cargoStatus").innerHTML = `Cargo Mass: ${cargoMass.value} kilograms- There is too much mass for the shuttle to take off`;
+        document.getElementById("launchStatus").innerHTML = "<span style='color: red;'>`The shuttle is not ready for launch.`</span>"
+        document.getElementById("pilotStatus").innerHTML =`Pilot ${pilot.value} is ready`;
+        document.getElementById("copilotStatus").innerHTML =`Pilot ${copilot.value} is ready`
+     }
+
+
+
 
     };
 
