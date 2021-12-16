@@ -31,23 +31,20 @@ function validateInput(testInput) {
 };
  
 function formSubmission(document, pilot, copilot, fuelLevel, cargoMass) {
+
     if (validateInput(pilot.value) === "Empty" || validateInput(copilot.value) === "Empty" || validateInput(fuelLevel.value) === "Empty" || validateInput(cargoMass.value) === "Empty") {
         alert ("You must enter information into each field.")
-        document.getElementById("faultyItems").style.visibility= "hidden";
     }
-
     
     if (validateInput(pilot.value) === "Is a Number" || validateInput(copilot.value) === "Is a Number") {
         alert ("Invalid input")
-        document.getElementById("faultyItems").style.visibility= "hidden";
     } else if (validateInput(fuelLevel.value) === "Not a Number" || validateInput(cargoMass.value) === "Not a Number") {
         alert ("Invalid input")
-        document.getElementById("faultyItems").style.visibility= "hidden";
     }
-
+   
     if (fuelLevel.value > 10000 && cargoMass.value < 10000) {
+        document.getElementById("faultyItems").style.visibility = "visible";
         document.getElementById("launchStatus").innerHTML = `<span style='color: green;'>The shuttle is ready for launch.</span>`;
-        document.getElementById("faultyItems").style.visibility= "visible";
         document.getElementById("pilotStatus").innerHTML =`${pilot.value} is ready`;
         document.getElementById("copilotStatus").innerHTML =`${copilot.value} is ready`;
     } else if (fuelLevel.value < 10000) {
